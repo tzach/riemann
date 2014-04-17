@@ -45,9 +45,7 @@
                    (- (System/currentTimeMillis) age)))
    [age val]
    [(System/currentTimeMillis)
-    (let [{:keys [exit out]} (sh "hostname")]
-      (if (= exit 0)
-        (.trim out)))]))
+    (.getHostName (java.net.InetAddress/getLocalHost))]))
 
 ; Platform
 (let [cache (atom [nil nil])]
